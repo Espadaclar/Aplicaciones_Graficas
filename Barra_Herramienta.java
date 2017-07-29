@@ -54,8 +54,17 @@ public class Barra_Herramienta extends JFrame
             AccionColor accion_azul = new AccionColor("Azul", new ImageIcon("../iconos/azul.gif"), Color.BLUE);
             AccionColor accion_amarillo = new AccionColor("Amarillo", new ImageIcon("../iconos/amarillo.gif"), Color.YELLOW);
             AccionColor accion_rojo = new AccionColor("Rojo", new ImageIcon("../iconos/rojo.gif"), Color.RED);
-
-            AccionColor accion_cerrar = new AccionColor("Cerrar", new ImageIcon("../iconos/cerrar.gif"), Color.WHITE);
+            //para anadir el boton de cerrar, cramos una cl, anonima.
+            Action accion_cerrar = new AbstractAction("Cerrar", new ImageIcon("../iconos/cerrar.gif")) {
+                
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.exit(0);
+                }
+            };
+            
+            
+            //AccionColor("Cerrar", new ImageIcon("../iconos/cerrar.gif"), Color.WHITE);
 
             azul = new JButton(accion_azul);
             amarillo = new JButton(accion_amarillo);
@@ -71,7 +80,7 @@ public class Barra_Herramienta extends JFrame
             menu.add(accion_azul);
             menu.add(accion_amarillo);
             menu.add(accion_rojo);
-            //menu.add(accion_cerrar);
+            menu.add(accion_cerrar);
 
             barraMenu.add(menu);
             add(barraMenu); // -----------anade la barra del menu a la lamina del marco.
@@ -80,7 +89,6 @@ public class Barra_Herramienta extends JFrame
         }
         // Clase interna hecha con la cl, 'AbstracAction' en vez de la interface 'Action'
         private class AccionColor extends AbstractAction {
-
             private Color color;
             public AccionColor(String name, Icon icono, Color color) {
                 this.color = color;
@@ -92,13 +100,7 @@ public class Barra_Herramienta extends JFrame
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String valor = e.getActionCommand();
-                if (valor == "Cerrar") {
-                    System.exit(0);
-                }
-                else{
                      setBackground(color);
-                }
             }
         }
     }
