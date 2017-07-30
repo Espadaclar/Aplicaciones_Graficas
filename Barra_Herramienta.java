@@ -12,23 +12,23 @@ public class Barra_Herramienta extends JFrame
         Barra_Herramienta marco = new Barra_Herramienta();
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    
+
     public Barra_Herramienta() {
-        
+
         Lamina lamina = new Lamina();
         add(lamina);
-        
+
         setBounds(150, 70, 900, 500);
         setVisible(true);
         setTitle("Menu_&&_Barra_Herramientas");
-        
+
         Toolkit icon = Toolkit.getDefaultToolkit();
         Image image = icon.getImage("../icono2.gif");
         setIconImage(image);
     }
-    
+
     public class Lamina extends JPanel {
-    
+
         private JButton azul;
         private JButton amarillo;
         private JButton rojo;
@@ -45,7 +45,7 @@ public class Barra_Herramienta extends JFrame
             setLayout(new GridLayout(15, 1));
 
             barraMenu = new JMenuBar();
-            barra = new JToolBar();
+            JToolBar barra = new JToolBar();
             menu = new JMenu(("Color"));
 
             FlowLayout laminaMenu = new FlowLayout(FlowLayout.LEFT);
@@ -56,16 +56,14 @@ public class Barra_Herramienta extends JFrame
             AccionColor accion_rojo = new AccionColor("Rojo", new ImageIcon("../iconos/rojo.gif"), Color.RED);
             //para anadir el boton de cerrar, cramos una cl, anonima.
             Action accion_cerrar = new AbstractAction("Cerrar", new ImageIcon("../iconos/cerrar.gif")) {
-                
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.exit(0);
-                }
-            };
-            
-            
-            //AccionColor("Cerrar", new ImageIcon("../iconos/cerrar.gif"), Color.WHITE);
 
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        System.exit(0);
+                    }
+                };
+
+            //AccionColor("Cerrar", new ImageIcon("../iconos/cerrar.gif"), Color.WHITE);
             azul = new JButton(accion_azul);
             amarillo = new JButton(accion_amarillo);
             rojo = new JButton(accion_rojo);
@@ -100,7 +98,7 @@ public class Barra_Herramienta extends JFrame
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                     setBackground(color);
+                setBackground(color);
             }
         }
     }
