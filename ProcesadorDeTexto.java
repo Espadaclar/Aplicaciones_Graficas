@@ -78,7 +78,24 @@ public class ProcesadorDeTexto extends JFrame
             creaTamanoJRadioButtonMenuItem("30", "../iconos/file_font_truetype.gif", 30 );
             creaTamanoJRadioButtonMenuItem("35", "../iconos/file_font_truetype.gif", 35 );
 
-            iconoBarraH("Negrita", "../iconos/aaNegrita.gif");
+            // ---LLAMANOS AL MT QUE DEVUELVE UN OBJETO DE TIPO BOTON, Y DIRECTAMENTE LE PONEMOS  A LA ESCUCHA
+            // ---PARA QUE REALIZE UN DETERMINADO EVENTO.
+            iconoBarraH("../iconos/aaNegrita.gif").addActionListener(new StyledEditorKit.BoldAction());
+            iconoBarraH("../iconos/aaCursiva.gif").addActionListener(new StyledEditorKit.ItalicAction());
+            iconoBarraH("../iconos/aaSubrrallado.gif").addActionListener(new StyledEditorKit.UnderlineAction());
+            iconoBarraH("../iconos/aaCopiar.gif").addActionListener(new StyledEditorKit.CopyAction());
+            iconoBarraH("../iconos/aaCortar.gif").addActionListener(new StyledEditorKit.CutAction());
+            iconoBarraH("../iconos/aaPegar.gif").addActionListener(new StyledEditorKit.PasteAction());
+            barraH.addSeparator();
+            iconoBarraH("../iconos/aaTextoJustificado.gif").addActionListener(new StyledEditorKit.AlignmentAction(" ", 3));
+            iconoBarraH("../iconos/aaTextoCentrado.gif").addActionListener(new StyledEditorKit.AlignmentAction(" ", 1));
+            iconoBarraH( "../iconos/aaTextoDerecha.gif").addActionListener(new StyledEditorKit.AlignmentAction(" ", 2));
+            iconoBarraH("../iconos/aaTextoIzquierda.gif").addActionListener(new StyledEditorKit.AlignmentAction(" ", 0));
+            barraH.addSeparator();
+            iconoBarraH("../iconos/aaAzul.gif").addActionListener(new StyledEditorKit.ForegroundAction(" ", Color.BLUE));
+            iconoBarraH("../iconos/aaAmarillo.gif").addActionListener(new StyledEditorKit.ForegroundAction(" ", Color.YELLOW));
+            iconoBarraH("../iconos/aaRojo.gif").addActionListener(new StyledEditorKit.ForegroundAction(" ", Color.red));
+            /*iconoBarraH("Negrita", "../iconos/aaNegrita.gif");
             iconoBarraH("Cursiva", "../iconos/aaCursiva.gif");
             iconoBarraH("Subrrallado", "../iconos/aaSubrrallado.gif");
             iconoBarraH("Copiar", "../iconos/aaCopiar.gif");
@@ -92,7 +109,7 @@ public class ProcesadorDeTexto extends JFrame
 
             iconoBarraH("Azul", "../iconos/aaAzul.gif");
             iconoBarraH("Amarillo", "../iconos/aaAmarillo.gif");
-            iconoBarraH("Rojo", "../iconos/aaRojo.gif");       
+            iconoBarraH("Rojo", "../iconos/aaRojo.gif"); */      
         } 
 
         /**
@@ -137,9 +154,17 @@ public class ProcesadorDeTexto extends JFrame
         }
 
         /**
-         * Crea botones para barra de herramientas, tambien gestiona el evento que realiza.
+         * Se invoca en el constructor para crear varios botones
+         * @param ruta direccion donde se encuetra la imagen de un icono.
+         * @return objeto de tipo JButton para anadir a la barra de herramientas.
          */
-        public void iconoBarraH(String name, String icono) {
+        public JButton iconoBarraH(String ruta){
+            JButton boton = new JButton(new ImageIcon(ruta));
+            barraH.add(boton);
+            return boton;
+        }
+        
+        /*public void iconoBarraH(String name, String icono) {
 
             JButton element = new JButton(new ImageIcon(icono)); // BOTON QUE APARECE EN LA BARRA DE HERRAMIENTAS 
             if (name.equals("Negrita")) { // --------- APLICAMOS EL GESTOR DE EVENTOS
@@ -183,6 +208,6 @@ public class ProcesadorDeTexto extends JFrame
                 barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
             }
 
-        }
+        }*/
     }
 }
