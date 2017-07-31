@@ -5,8 +5,6 @@ import javax.swing.event.*;
 import javax.swing.text.*;
 
 
-
- 
 public class ProcesadorDeTexto extends JFrame
 {
     private Image image;
@@ -20,7 +18,7 @@ public class ProcesadorDeTexto extends JFrame
         Lamina lamina = new Lamina();
         add(lamina);
 
-        setBounds(150, 70, 900, 500);
+        setBounds(150, 70, 500, 750);
         setVisible(true);
         setTitle("46_Menus");
 
@@ -30,7 +28,7 @@ public class ProcesadorDeTexto extends JFrame
     }
 
     public class Lamina extends JPanel {
-            JPanel laminaN = new JPanel();//     para colocar la barra del menu.
+        JPanel laminaN = new JPanel();//     para colocar la barra del menu.
         JMenuBar barraM = new JMenuBar();//  barra del menu
         JMenu fuent, tamano, stilo;
         JTextPane texto = new JTextPane();// cuadro de texto
@@ -44,22 +42,20 @@ public class ProcesadorDeTexto extends JFrame
 
         private JToolBar barraH; //  --- para crear barra de herrmaientas.
 
-        
         public Lamina() {
             setLayout(new BorderLayout());// -------- DISPOSICION DE LA LAMINA BASE.
-            
-           JToolBar barraH = new JToolBar(JToolBar.VERTICAL);//  --- para crear barra de herrmaientas.
-  
+
+            barraH = new JToolBar(JToolBar.VERTICAL);//  --- para crear barra de herrmaientas.
+
             JPanel laminaBarraH = new JPanel();
             laminaBarraH.add(barraH);//  --- anade a laminaBarraH la barra de herrmaientas.
             add(laminaBarraH, BorderLayout.WEST);
-            
+
             group = new ButtonGroup();
-            
+
             add(laminaN, BorderLayout.NORTH);
             add(texto, BorderLayout.CENTER);
-            
-            //texto.setFont(new Font("Arial", Font.PLAIN, 22));
+
             laminaN.add(barraM);// -------------pone la barra dentro de una lamina.
 
             fuent = new JMenu("Fuente");           
@@ -87,7 +83,16 @@ public class ProcesadorDeTexto extends JFrame
             iconoBarraH("Subrrallado", "../iconos/aaSubrrallado.gif");
             iconoBarraH("Copiar", "../iconos/aaCopiar.gif");
             iconoBarraH("Cortar", "../iconos/aaCortar.gif");
-            iconoBarraH("Pegar", "../iconos/aaPegar.gif");        
+            iconoBarraH("Pegar", "../iconos/aaPegar.gif");
+
+            iconoBarraH("Justificado", "../iconos/aaTextoJustificado.gif");
+            iconoBarraH("Centrado", "../iconos/aaTextoCentrado.gif");
+            iconoBarraH("Derecha", "../iconos/aaTextoDerecha.gif");
+            iconoBarraH("Izquierda", "../iconos/aaTextoIzquierda.gif");
+
+            iconoBarraH("Azul", "../iconos/aaAzul.gif");
+            iconoBarraH("Amarillo", "../iconos/aaAmarillo.gif");
+            iconoBarraH("Rojo", "../iconos/aaRojo.gif");       
         } 
 
         /**
@@ -117,7 +122,7 @@ public class ProcesadorDeTexto extends JFrame
         }
 
         public void creaTamanoJRadioButtonMenuItem(String text, String icono, int tam){
-            z = tam;
+            z = tam;  // --almacena el tamano de la letra.
             radio = new JRadioButtonMenuItem(text, new ImageIcon(icono));
             radio.addActionListener(new  StyledEditorKit.FontSizeAction("adfaa", z));
             tamano.add(radio);
@@ -134,31 +139,50 @@ public class ProcesadorDeTexto extends JFrame
         /**
          * Crea botones para barra de herramientas, tambien gestiona el evento que realiza.
          */
-        public void iconoBarraH(String name, String icono){
+        public void iconoBarraH(String name, String icono) {
 
             JButton element = new JButton(new ImageIcon(icono)); // BOTON QUE APARECE EN LA BARRA DE HERRAMIENTAS 
-            if(name.equals("Negrita")){ // --------- APLICAMOS EL GESTOR DE EVENTOS
+            if (name.equals("Negrita")) { // --------- APLICAMOS EL GESTOR DE EVENTOS
                 element.addActionListener(new StyledEditorKit.BoldAction());
                 barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            }else if(name.equals("Cursiva")){
+            } else if (name.equals("Cursiva")) {
                 element.addActionListener(new StyledEditorKit.ItalicAction());
                 barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            }
-            else if(name.equals("Copiar")){
+            } else if (name.equals("Copiar")) {
                 element.addActionListener(new DefaultEditorKit.CopyAction());
                 barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            }
-            else if(name.equals("Cortar")){
+            } else if (name.equals("Cortar")) {
                 element.addActionListener(new DefaultEditorKit.CutAction());
                 barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            }
-            else if(name.equals("Pegar")){
+            } else if (name.equals("Pegar")) {
                 element.addActionListener(new DefaultEditorKit.PasteAction());
                 barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            }else if(name.equals("Subrrallado")){
+            } else if (name.equals("Azul")) {
+                element.addActionListener(new StyledEditorKit.ForegroundAction("Az", Color.BLUE));
+                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
+            } else if (name.equals("Amarillo")) {
+                element.addActionListener(new StyledEditorKit.ForegroundAction("Am", Color.YELLOW));
+                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
+            } else if (name.equals("Rojo")) {
+                element.addActionListener(new StyledEditorKit.ForegroundAction("R", Color.RED));
+                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
+            } else if (name.equals("Subrrallado")) {
                 element.addActionListener(new StyledEditorKit.UnderlineAction());
                 barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
+            } else if (name.equals("Justificado")) {
+                element.addActionListener(new StyledEditorKit.AlignmentAction("R", 3));
+                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
+            } else if (name.equals("Centrado")) {
+                element.addActionListener(new StyledEditorKit.AlignmentAction("R", 1));
+                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
+            } else if (name.equals("Derecha")) {
+                element.addActionListener(new StyledEditorKit.AlignmentAction("R", 2));
+                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
+            } else if (name.equals("Izquierda")) {
+                element.addActionListener(new StyledEditorKit.AlignmentAction("R", 0));
+                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
             }
+
         }
     }
 }
