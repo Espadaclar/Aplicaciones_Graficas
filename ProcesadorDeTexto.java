@@ -95,21 +95,7 @@ public class ProcesadorDeTexto extends JFrame
             iconoBarraH("../iconos/aaAzul.gif").addActionListener(new StyledEditorKit.ForegroundAction(" ", Color.BLUE));
             iconoBarraH("../iconos/aaAmarillo.gif").addActionListener(new StyledEditorKit.ForegroundAction(" ", Color.YELLOW));
             iconoBarraH("../iconos/aaRojo.gif").addActionListener(new StyledEditorKit.ForegroundAction(" ", Color.red));
-            /*iconoBarraH("Negrita", "../iconos/aaNegrita.gif");
-            iconoBarraH("Cursiva", "../iconos/aaCursiva.gif");
-            iconoBarraH("Subrrallado", "../iconos/aaSubrrallado.gif");
-            iconoBarraH("Copiar", "../iconos/aaCopiar.gif");
-            iconoBarraH("Cortar", "../iconos/aaCortar.gif");
-            iconoBarraH("Pegar", "../iconos/aaPegar.gif");
-
-            iconoBarraH("Justificado", "../iconos/aaTextoJustificado.gif");
-            iconoBarraH("Centrado", "../iconos/aaTextoCentrado.gif");
-            iconoBarraH("Derecha", "../iconos/aaTextoDerecha.gif");
-            iconoBarraH("Izquierda", "../iconos/aaTextoIzquierda.gif");
-
-            iconoBarraH("Azul", "../iconos/aaAzul.gif");
-            iconoBarraH("Amarillo", "../iconos/aaAmarillo.gif");
-            iconoBarraH("Rojo", "../iconos/aaRojo.gif"); */      
+                  
         } 
 
         /**
@@ -163,51 +149,5 @@ public class ProcesadorDeTexto extends JFrame
             barraH.add(boton);
             return boton;
         }
-        
-        /*public void iconoBarraH(String name, String icono) {
-
-            JButton element = new JButton(new ImageIcon(icono)); // BOTON QUE APARECE EN LA BARRA DE HERRAMIENTAS 
-            if (name.equals("Negrita")) { // --------- APLICAMOS EL GESTOR DE EVENTOS
-                element.addActionListener(new StyledEditorKit.BoldAction());
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Cursiva")) {
-                element.addActionListener(new StyledEditorKit.ItalicAction());
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Copiar")) {
-                element.addActionListener(new DefaultEditorKit.CopyAction());
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Cortar")) {
-                element.addActionListener(new DefaultEditorKit.CutAction());
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Pegar")) {
-                element.addActionListener(new DefaultEditorKit.PasteAction());
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Azul")) {
-                element.addActionListener(new StyledEditorKit.ForegroundAction("Az", Color.BLUE));
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Amarillo")) {
-                element.addActionListener(new StyledEditorKit.ForegroundAction("Am", Color.YELLOW));
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Rojo")) {
-                element.addActionListener(new StyledEditorKit.ForegroundAction("R", Color.RED));
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Subrrallado")) {
-                element.addActionListener(new StyledEditorKit.UnderlineAction());
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Justificado")) {
-                element.addActionListener(new StyledEditorKit.AlignmentAction("R", 3));
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Centrado")) {
-                element.addActionListener(new StyledEditorKit.AlignmentAction("R", 1));
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Derecha")) {
-                element.addActionListener(new StyledEditorKit.AlignmentAction("R", 2));
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            } else if (name.equals("Izquierda")) {
-                element.addActionListener(new StyledEditorKit.AlignmentAction("R", 0));
-                barraH.add(element);//  --- anade elemento a la barra de herrmaientas.
-            }
-
-        }*/
     }
 }
