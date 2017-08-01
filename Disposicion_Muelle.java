@@ -38,6 +38,7 @@ public class Disposicion_Muelle extends JFrame {
             setLayout(layout);
             // ---- CREAMOS EL MUELLE
             Spring muelle = Spring.constant(0, 10, 100);
+            Spring muelleRigido = Spring.constant(30);// --no se estira cuando redimensionamos la pantalla
             // ---- ANADIMOS LOS BOTONES A LA LAMINA
             add(boton1);
             add(boton2);
@@ -49,8 +50,8 @@ public class Disposicion_Muelle extends JFrame {
             // --- muelle -> objeto muelle.
             // --- SpringLayout.WEST -> zona del objeto donde termina  el muelle.
             // --- this -> objeto en el que termina el muelle.
-            layout.putConstraint(SpringLayout.WEST, boton2, muelle, SpringLayout.EAST, boton1);
-            layout.putConstraint(SpringLayout.WEST, boton3, muelle, SpringLayout.EAST, boton2);
+            layout.putConstraint(SpringLayout.WEST, boton2, muelleRigido, SpringLayout.EAST, boton1);
+            layout.putConstraint(SpringLayout.WEST, boton3, muelleRigido, SpringLayout.EAST, boton2);
             layout.putConstraint(SpringLayout.EAST, this, muelle, SpringLayout.EAST, boton3);
         }
     }
