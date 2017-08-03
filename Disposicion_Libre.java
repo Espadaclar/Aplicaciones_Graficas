@@ -68,7 +68,7 @@ public class Disposicion_Libre extends JFrame {
 class EnColumnas implements LayoutManager {
 
     // --- coordenadas para colocar el primer elemento.
-    private int x = 20;
+    private int x;
     private int y = 20;
 
     @Override
@@ -96,7 +96,8 @@ class EnColumnas implements LayoutManager {
         //este mt obtine los datos de los componentes que contenga la lamina a la que la asignemos la disposicion que estamos creando
         int cont = 0; // --> variable para almacenar el componente en el se encuentra un bucle.
         int numElementos = miContenedor.getComponentCount(); // --> almacena el nº de elementos que tiene la lamina o el contenedor.
-
+        int d = miContenedor.getWidth();// -- obtiene el ancho del contenedor.
+        x = d/2;
         // --> formamos un bucle que de tantas vueltas como elementos tiene el contenedor.
         for(int i = 0; i < numElementos; i ++){
             cont ++;
@@ -105,13 +106,13 @@ class EnColumnas implements LayoutManager {
             Component comp = miContenedor.getComponent(i);
 
             // RECORDEMOS¡¡¡ los componentes no estan colocados aun, les ponemos las coordenadas.
-            comp.setBounds(x, y, 100, 20); // ----estas son las coordenadas para el componente 'i'.
+            comp.setBounds(x -100, y, 100, 20); // ----estas son las coordenadas para el componente 'i'.
 
             x += 100; // -- aumentamos la coordenada 'x' para colocar el 2 componente, a la misma altura que el 1º.
             // -- al ser una colocación en parejas, los elementos impares cambian la coordenada 'y'. luengo
 
             if(cont % 2 == 0){
-                x = 20;
+                x = d/2;
                 y += 40; 
             }            
         }
