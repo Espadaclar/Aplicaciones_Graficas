@@ -10,17 +10,15 @@
  * --- showConfirmDialog(),   muestra una ventana con diferentes botones, ‘aceptar, cancelar etc’
  * --- showOptionDialog(),      es un compendio o suma de las opciones anteriores.
  */
-
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.event.*;
-
 /**
  * franciscoJavier
  */
 public class Ventana_Emergente extends JFrame{
-
+    
     public static void main(String[] args) {
         Ventana_Emergente marco = new Ventana_Emergente();
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,7 +60,6 @@ public class Ventana_Emergente extends JFrame{
         }
 
         private class AccionBotones implements ActionListener {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == boton1) {
@@ -76,13 +73,16 @@ public class Ventana_Emergente extends JFrame{
                     JOptionPane.showMessageDialog(Lamina_Cuadros_Dialogo.this, "has pulsado el boton 1", "Advertencia", 2);
                 }
                 else if (e.getSource() == boton2) {
+                    // --------- ********** showInputDialog("Introduce orden"); aparece otro tipo de ventana.
                     JOptionPane.showInputDialog("Introduce orden");
                 } 
                 else if (e.getSource() == boton3) {
-                    System.out.println("has pulsado el boton 3");
+                    // --------- ********** showInputDialog("Introduce orden"); aparece otro tipo de ventana pidiendo una confirmación¡¡¡.
+                    // --- el ultimo de los parametros permite variar el nº de botones que apareceran en la ventana emergente
+                    JOptionPane.showConfirmDialog(Lamina_Cuadros_Dialogo.this, "Elige opcion", "Confirmar", 2);
                 } 
                 else if (e.getSource() == boton4) {
-                    System.out.println("has pulsado el boton 4");
+                    JOptionPane.showOptionDialog(Lamina_Cuadros_Dialogo.this, "Elige", "Opciones", 1, 1, null, null, null);
                 }
             }
         }
